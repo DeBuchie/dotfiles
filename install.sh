@@ -7,6 +7,16 @@ pushd .
 mkdir -p $dev
 cd $dev
 
+echo 'Enter new hostname of the machine (e.g. macbook-paulmillr)'
+  read hostname
+  echo "Setting new hostname to $hostname..."
+  scutil --set HostName "$hostname"
+  compname=$(sudo scutil --get HostName | tr '-' '.')
+  echo "Setting computer name to $compname"
+  scutil --set ComputerName "$compname"
+  sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$compname"
+
+
 # If we on macOS, install homebrew and tweak system a bit.
 if [[ `uname` == 'Darwin' ]]; then
   echo 'Installing Oh My Zsh...'
@@ -19,7 +29,9 @@ if [[ `uname` == 'Darwin' ]]; then
   fi
 
   # Homebrew packages.
-  brew install homebrew/cask/google-chrome  
+  brew install node youtube-dl
+
+  brew cask install alfred iterm2 sublime-text spotify homebrew/cask-fonts/font-jetbrains-mono google-chrome visual-studio-code
   # echo 'Tweaking macOS...'
     # source 'etc/macos.sh'
 
