@@ -58,17 +58,19 @@ if [[ `uname` == 'Darwin' ]]; then
   fi
 
   # Homebrew packages.
-  brew install node youtube-dl zsh-syntax-highlighting
+  echo 'Installing Homebrew Packages...'
+  brew install node youtube-dl zsh-syntax-highlighting java gradle maven
   brew tap homebrew/cask-fonts
-  brew cask install alfred iterm2 sublime-text spotify font-jetbrainsmono-nerd-font google-chrome visual-studio-code jetbrains-toolbox dash
-  # echo 'Tweaking macOS...'
-    # source 'etc/macos.sh'
+  brew cask install alfred iterm2 sublime-text spotify font-jetbrainsmono-nerd-font google-chrome visual-studio-code jetbrains-toolbox dash setapp karabiner-elements kaleidoscope
+  
+  echo 'Installing Quick Look plugins...'
+  brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize suspicious-package quicklookase qlvideo
 
-  # https://github.com/sindresorhus/quick-look-plugins
-  # echo 'Installing Quick Look plugins...'
-  #   brew tap phinze/homebrew-cask
-  #   brew install caskroom/cask/brew-cask
-  #   brew cask install suspicious-package quicklook-json qlmarkdown qlstephen qlcolorcode
+  echo 'Install npm packages'
+    npm install -g @angular/cli
+
+  echo 'Tweaking macOS...'
+    source 'macos.sh'
 fi
 
 pwd="$(pwd)"
@@ -78,4 +80,4 @@ for file in {.dotfiles,.ssh,.hushlogin,.vimrc,.zshrc}; do
 done
 unset file
 echo 'Reloading zshrc'
-source ~/.zshrc
+#source ~/.zshrc
