@@ -61,7 +61,7 @@ if [[ `uname` == 'Darwin' ]]; then
   echo 'Installing Homebrew Packages...'
   brew install node youtube-dl zsh-syntax-highlighting java gradle maven
   brew tap homebrew/cask-fonts
-  brew cask install alfred iterm2 sublime-text spotify font-jetbrainsmono-nerd-font google-chrome visual-studio-code jetbrains-toolbox dash setapp karabiner-elements kaleidoscope
+  brew cask install alfred iterm2 sublime-text spotify font-jetbrainsmono-nerd-font google-chrome visual-studio-code jetbrains-toolbox dash setapp karabiner-elements kaleidoscope rectangle
   
   echo 'Installing Quick Look plugins...'
   brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize suspicious-package quicklookase qlvideo
