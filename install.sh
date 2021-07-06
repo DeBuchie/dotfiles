@@ -39,11 +39,6 @@ if [[ `uname` == 'Darwin' ]]; then
     echo 'Installing Oh My Zsh...'
 	  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   fi
-  themePath="$ZSH_CUSTOM/themes/powerlevel10k"
-  if [[ -f $themePath ]]; then
-    echo 'Install Zsh Theme..'
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-  fi
 
   which -s brew
   if [[ $? != 0 ]]; then
@@ -61,10 +56,14 @@ if [[ `uname` == 'Darwin' ]]; then
   echo 'Installing Homebrew Packages...'
   brew install node youtube-dl zsh-syntax-highlighting java gradle maven
   brew tap homebrew/cask-fonts
-  brew cask install alfred iterm2 sublime-text spotify font-jetbrainsmono-nerd-font google-chrome visual-studio-code jetbrains-toolbox dash setapp karabiner-elements kaleidoscope rectangle
-  
+  brew tap homebrew/cask-versions
+  brew tap homebrew/cask-drivers
+  brew tap federico-terzi/espanso
+  brew install starship iterm2 spotify font-jetbrains-mono-nerd-font google-chrome visual-studio-code jetbrains-toolbox dash setapp firefox-developer-edition logitech-options
+  brew install --cask raycast
+
   echo 'Installing Quick Look plugins...'
-  brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize suspicious-package quicklookase qlvideo
+  brew install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize suspicious-package quicklookase qlvideo
 
   echo 'Install npm packages'
     npm install -g @angular/cli
@@ -78,6 +77,10 @@ for file in {.dotfiles,.ssh,.hushlogin,.vimrc,.zshrc}; do
   filepath="$pwd/dotfiles/$file"
   [ -r "$filepath" ] && echo "Copying $filepath" && cp -r "$filepath" ~/
 done
+
 unset file
+
+echo "Copying Starship Config file" && cp -r starship.toml ~/.config
+
 echo 'Reloading zshrc'
 #source ~/.zshrc
