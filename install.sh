@@ -83,4 +83,6 @@ unset file
 echo "Copying Starship Config file" && cp -r starship.toml ~/.config
 
 echo 'Reloading zshrc'
-#source ~/.zshrc
+source ~/.zshrc
+
+# Keyboard Layout https://github.com/patrick-zippenfenig/us-with-german-umlauts
